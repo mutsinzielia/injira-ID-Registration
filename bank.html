@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bank Card Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: #e9ecf3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.bank-card {
+    width: 420px;
+    height: 240px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #1a237e, #283593);
+    padding: 25px;
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+.chip {
+    width: 55px;
+    height: 40px;
+    background: gold;
+    border-radius: 8px;
+}
+
+.number {
+    margin-top: 40px;
+    font-size: 22px;
+    letter-spacing: 3px;
+}
+
+.name {
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+.valid {
+    font-size: 12px;
+    margin-top: 5px;
+}
+</style>
+</head>
+<body>
+
+<div class="bank-card">
+    <div class="chip"></div>
+    <div class="number">
+        5399 27<span id="r1"></span> <span id="r2"></span>
+    </div>
+    <div class="name" id="cardName"></div>
+    <div class="valid">VALID THRU 12/30</div>
+</div>
+
+<script>
+document.getElementById("cardName").innerText =
+    localStorage.getItem("fullname");
+
+document.getElementById("r1").innerText =
+    Math.floor(100 + Math.random() * 900);
+
+document.getElementById("r2").innerText =
+    Math.floor(1000 + Math.random() * 9000);
+</script>
+
+</body>
+</html>

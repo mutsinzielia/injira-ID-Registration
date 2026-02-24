@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rwanda National ID Card</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #e6e6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* IMIGONGO FRAME */
+        .frame {
+            padding: 15px;
+            background: repeating-linear-gradient(
+                45deg,
+                black,
+                black 10px,
+                white 10px,
+                white 20px
+            );
+            border-radius: 25px;
+        }
+
+        /* ID CARD */
+        .card {
+            width: 450px;
+            height: 260px;
+            background: linear-gradient(to right, #00A1DE 60%, #FAD201 40%);
+            border-radius: 18px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "RWANDA";
+            position: absolute;
+            font-size: 80px;
+            font-weight: bold;
+            color: rgba(255,255,255,0.08);
+            top: 60px;
+            left: 40px;
+            transform: rotate(-20deg);
+        }
+
+        .header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+        }
+
+        .sub-header {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .info {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .info strong {
+            width: 120px;
+            display: inline-block;
+        }
+
+        .photo {
+            width: 110px;
+            height: 130px;
+            border-radius: 8px;
+            border: 3px solid white;
+            position: absolute;
+            right: 20px;
+            top: 70px;
+            object-fit: cover;
+            background: white;
+        }
+
+        .id-number {
+            margin-top: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .signature {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 12px;
+        }
+
+        .flag-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: linear-gradient(to right, #00A1DE 50%, #FAD201 50%, #20603D 100%);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            background: #20603D;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #154d2e;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+<div class="frame">
+    <div class="card">
+
+        <div class="header">REPUBLIC OF RWANDA</div>
+        <div class="sub-header">National Identification Card</div>
+
+        <div class="info">
+            <p><strong>ID No:</strong> <span id="idno">1199XXXXXXXXX</span></p>
+            <p><strong>Name:</strong> <span id="name"></span></p>
+            <p><strong>Location:</strong> <span id="location"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+        </div>
+
+        <img id="photo" class="photo">
+
+        <div class="signature">
+            Holder's Signature
+        </div>
+
+        <div class="flag-bar"></div>
+
+    </div>
+</div>
+
+<button onclick="goToBank()">Apply for Bank Card</button>
+</div>
+
+<script>
+document.getElementById("name").innerText = localStorage.getItem("fullname");
+document.getElementById("location").innerText = localStorage.getItem("location");
+document.getElementById("dob").innerText = localStorage.getItem("dob");
+document.getElementById("photo").src = localStorage.getItem("photo");
+
+/* Auto-generate simple demo ID */
+let randomID = "1199" + Math.floor(Math.random() * 1000000000);
+document.getElementById("idno").innerText = randomID;
+
+function goToBank() {
+    window.location.href = "bank.html";
+}
+</script>
+
+</body>
+</html>
