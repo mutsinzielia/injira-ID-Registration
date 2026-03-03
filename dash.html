@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Injira Government Portal</title>
+
+<style>
+:root{
+--bg:#f1f5f9;
+--card:#ffffff;
+--text:#0f172a;
+--sidebar:#0b3d91;
+--primary:#1d4ed8;
+}
+
+body.dark{
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f1f5f9;
+--sidebar:#020617;
+--primary:#3b82f6;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI}
+
+/* ================= REGISTRATION ================= */
+
+#registration{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#4e73df,#1cc88a);
+}
+
+.container{
+background:#fff;
+width:380px;
+padding:30px;
+border-radius:15px;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+padding:10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#4e73df;
+color:white;
+margin-top:10px;
+}
+
+/* ================= DASHBOARD ================= */
+
+#dashboard{
+display:none;
+}
+
+.dashboard-wrapper{
+display:flex;
+min-height:100vh;
+background:var(--bg);
+color:var(--text);
+}
+
+.sidebar{
+width:250px;
+background:var(--sidebar);
+color:white;
+padding:25px;
+}
+
+.sidebar h2{margin-bottom:30px}
+.sidebar li{
+list-style:none;
+padding:12px;
+margin-bottom:10px;
+cursor:pointer;
+border-radius:6px;
+}
+.sidebar li:hover{
+background:rgba(255,255,255,0.15);
+}
+
+.main{
+flex:1;
+padding:30px;
+}
+
+.card{
+background:var(--card);
+padding:20px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,.05);
+margin-bottom:20px;
+}
+
+.section{display:none}
+.section.active{display:block}
+
+.progress{
+height:18px;
+background:#ddd;
+border-radius:10px;
+margin-top:10px;
+}
+.progress-bar{
+height:18px;
+width:0%;
+background:var(--primary);
+border-radius:10px;
+transition:1s;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= REGISTRATION PAGE ================= -->
+<div id="registration">
+<div class="container">
+<h2>Injira ID Registration</h2>
+
+<input type="text" id="fullname" placeholder="Full Name">
+<input type="text" id="location" placeholder="Location">
+<input type="date" id="dob">
+
+<button onclick="register()">Submit</button>
+</div>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div id="dashboard">
+<div class="dashboard-wrapper">
+
+<div class="sidebar">
+<h2>Injira Portal</h2>
+<li onclick="showSection('home')">🏠 Dashboard</li>
+<li onclick="showSection('myid')">🪪 My ID</li>
+<li onclick="showSection('visa')">💳 Apply Visa</li>
+<li onclick="showSection('reports')">📊 Reports</li>
+<li onclick="toggleDark()">🌙 Dark Mode</li>
+</div>
+
+<div class="main">
+
+<!-- HOME -->
+<div id="home" class="section active">
+<div class="card">
+<h3>Welcome</h3>
+<p id="welcome"></p>
+</div>
+</div>
+
+<!-- MY ID -->
+<div id="myid" class="section">
+<div class="card">
+<h3>Citizen ID</h3>
+<p><strong>Name:</strong> <span id="id_name"></span></p>
+<p><strong>Location:</strong> <span id="id_location"></span></p>
+<p><strong>DOB:</strong> <span id="id_dob"></span></p>
+<p><button onclick=""><a href="id card.html">View My Card</a></button></p>
+</div>
+</div>
+
+<!-- VISA -->
+<div id="visa" class="section">
+<div class="card">
+<h3>Visa Application</h3>
+<input type="text" id="visaType" placeholder="Visa Type">
+<input type="text" id="visaDuration" placeholder="Duration">
+<button onclick="submitVisa()">Submit</button>
+<p id="visaStatus"></p>
+<div ></div>
+</div>
+</div>
+</div>
+
+<!-- REPORTS -->
+<div id="reports" class="section">
+<div class="card">
+<h3>System Reports</h3>
+<p>Total Applications: <span id="totalApps">0</span></p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script>
+
+/* ========== REGISTER ========== */
+function register(){
+localStorage.setItem("fullname",fullname.value);
+localStorage.setItem("location",location.value);
+localStorage.setItem("dob",dob.value);
+
+document.getElementById("registration").style.display="none";
+document.getElementById("dashboard").style.display="block";
+
+loadDashboard();
+}
+
+/* ========== LOAD DASHBOARD DATA ========== */
+function loadDashboard(){
+id_name.innerText=localStorage.getItem("fullname");
+id_location.innerText=localStorage.getItem("location");
+id_dob.innerText=localStorage.getItem("dob");
+welcome.innerText="Welcome "+localStorage.getItem("fullname");
+}
+
+/* ========== SECTION SWITCH ========== */
+function showSection(id){
+document.querySelectorAll(".section").forEach(sec=>sec.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+/* ========== VISA ========== */
+function submitVisa(){
+let count=localStorage.getItem("apps")||0;
+count++;
+localStorage.setItem("apps",count);
+totalApps.innerText=count;
+
+visaStatus.innerText="Application Submitted!";
+
+setTimeout(()=>{progressBar.style.width="100%";},2000);
+window.location.href = "bank.html";
+
+}
+
+/* ========== DARK MODE ========== */
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+
+/* ========== AUTO LOAD IF ALREADY REGISTERED ========== */
+if(localStorage.getItem("fullname")){
+document.getElementById("registration").style.display="none";
+document.getElementById("dashboard").style.display="block";
+loadDashboard();
+}
+
+</script>
+
+</body>
+</html>

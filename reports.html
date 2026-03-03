@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reports</title>
+<style>
+body{font-family:Segoe UI;background:#f4f6f9;margin:0;display:flex}
+.sidebar{width:220px;background:#1f2937;color:#fff;padding:20px;height:100vh}
+.menu{list-style:none;padding:0}
+.menu li{padding:10px;cursor:pointer}
+.menu li:hover{background:#374151}
+.main{flex:1;padding:40px}
+.report-box{
+background:#fff;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+max-width:400px;
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<ul class="menu">
+<li onclick="goPage('dashboard.html')">🏠 Dashboard</li>
+<li onclick="goPage('myid.html')">🪪 My ID</li>
+<li onclick="goPage('reports.html')">📊 Reports</li>
+<li onclick="goPage('settings.html')">⚙ Settings</li>
+</ul>
+</div>
+
+<div class="main">
+<h2>User Reports</h2>
+<div class="report-box">
+<p><strong>Name:</strong> <span id="name"></span></p>
+<p><strong>Status:</strong> Active</p>
+<p><strong>Registered:</strong> <span id="date"></span></p>
+</div>
+</div>
+
+<script>
+function goPage(page){ window.location.href = page; }
+
+document.getElementById("name").innerText = localStorage.getItem("fullname");
+document.getElementById("date").innerText = new Date().toDateString();
+</script>
+
+</body>
+</html>

@@ -6,156 +6,154 @@
 <title>Injira ID Registration</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
 
-    body {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #4e73df, #1cc88a);
-    }
+ body {
+     height: 100vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background: linear-gradient(135deg, #4e73df, #1cc88a);
+ }
 
-    .container {
-        background: #ffffff;
-        width: 380px;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        text-align: center;
-        animation: fadeIn 0.6s ease-in-out;
-    }
+ .container {
+ background: #ffffff;
+ width: 380px;
+ padding: 30px;
+ border-radius: 15px;
+ box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+ text-align: center;
+ animation: fadeIn 0.6s ease-in-out;
+ }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+ @keyframes fadeIn {
+ from { opacity: 0; transform: translateY(10px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
 
-    h2 {
-        margin-bottom: 5px;
-        color: #333;
-    }
+ h2 {
+ margin-bottom: 5px;
+ color: #333;
+ }
 
-    p {
-        font-size: 13px;
-        color: #777;
-        margin-bottom: 20px;
-    }
+ p {
+ font-size: 13px;
+ color: #777;
+ margin-bottom: 20px;
+ }
 
-    .input-group {
-        margin-bottom: 15px;
-        text-align: left;
-    }
+ .input-group {
+ margin-bottom: 15px;
+ text-align: left;
+ }
 
-    label {
-        font-size: 13px;
-        color: #555;
-    }
+ label {
+ font-size: 13px;
+ color: #555;
+}
 
-    input {
-        width: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        margin-top: 5px;
-        transition: 0.3s;
-    }
+ input {
+ width: 100%;
+ padding: 10px;
+ border-radius: 8px;
+ border: 1px solid #ccc;
+ margin-top: 5px;
+ transition: 0.3s;
+ }
 
-    input:focus {
-        border-color: #4e73df;
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(78,115,223,0.2);
-    }
+ input:focus {
+ border-color: #4e73df;
+ outline: none;
+ box-shadow: 0 0 0 2px rgba(78,115,223,0.2);
+ }
 
-    .camera-box {
-        margin-top: 15px;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 2px dashed #ddd;
-        background: #f8f9fc;
-        padding: 10px;
-    }
+ .camera-box {
+ margin-top: 15px;
+ border-radius: 12px;
+ overflow: hidden;
+ border: 2px dashed #ddd;
+ background: #f8f9fc;
+ padding: 10px;
+ }
 
-    video, canvas {
-        width: 100%;
-        border-radius: 10px;
-    }
+ video, canvas {
+ width: 100%;
+ border-radius: 10px;
+ }
 
-    .btn {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 8px;
-        margin-top: 12px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+ .btn {
+ width: 100%;
+ padding: 10px;
+ border: none;
+ border-radius: 8px;
+ margin-top: 12px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: 0.3s;
+ }
+ .capture-btn {
+ background: #f6c23e;
+ color: #fff;
+ }
+ .capture-btn:hover {
+ background: #dda20a;
+ }
 
-    .capture-btn {
-        background: #f6c23e;
-        color: #fff;
-    }
+ .submit-btn {
+ background: #4e73df;
+ color: #fff;
+ opacity: 0.6;
+ }
 
-    .capture-btn:hover {
-        background: #dda20a;
-    }
+ .submit-btn.enabled {
+ opacity: 1;
+ }
 
-    .submit-btn {
-        background: #4e73df;
-        color: #fff;
-        opacity: 0.6;
-    }
+ .submit-btn:hover.enabled {
+ background: #2e59d9;
+ }
 
-    .submit-btn.enabled {
-        opacity: 1;
-    }
-
-    .submit-btn:hover.enabled {
-        background: #2e59d9;
-    }
-
-    .preview {
-        margin-top: 10px;
-        display: none;
-    }
+ .preview {
+ margin-top: 10px;
+ display: none;
+ }
 
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Injira ID Registration</h2>
-    <p>Please enter your details and capture your photo</p>
+ <h2>Injira ID Registration</h2>
+ <p>Please enter your details and capture your photo</p>
 
-    <div class="input-group">
-        <label>Full Name</label>
-        <input type="text" id="fullname" placeholder="Enter your full name" required>
-    </div>
+ <div class="input-group">
+ <label>Full Name</label>
+ <input type="text" id="fullname" placeholder="Enter your full name" required>
+ </div>
 
-    <div class="input-group">
-        <label>Location</label>
-        <input type="text" id="location" placeholder="Enter your location" required>
-    </div>
+ <div class="input-group">
+ <label>Location</label>
+<input type="text" id="location" placeholder="Enter your location" required>
+ </div>
 
-    <div class="input-group">
-        <label>Date of Birth</label>
-        <input type="date" id="dob" required>
-    </div>
+ <div class="input-group">
+ <label>Date of Birth</label>
+ <input type="date" id="dob" required>
+ </div>
 
-    <div class="camera-box">
-        <video id="video" autoplay></video>
-        <canvas id="canvas" style="display:none;"></canvas>
-        <img id="previewImage" class="preview"/>
-    </div>
+<div class="camera-box">
+ <video id="video" autoplay></video>
+ <canvas id="canvas" style="display:none;"></canvas>
+ <img id="previewImage" class="preview"/>
+ </div>
 
-    <button class="btn capture-btn" onclick="takePhoto()">Capture Photo</button>
-    <button class="btn submit-btn" id="submitBtn" onclick="goToID()" disabled>Submit</button>
+ <button class="btn capture-btn" onclick="takePhoto()">Capture Photo</button>
+ <button class="btn submit-btn" id="submitBtn" onclick="goToID()" disabled>Submit</button>
 </div>
 
 <script>
@@ -166,39 +164,36 @@ let submitBtn = document.getElementById("submitBtn");
 
 navigator.mediaDevices.getUserMedia({ video: true })
 .then(stream => {
-    video.srcObject = stream;
+ video.srcObject = stream;
 })
 .catch(error => {
-    alert("Camera access denied or not available.");
+ alert("Camera access denied or not available.");
 });
 
 function takePhoto() {
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+ canvas.width = video.videoWidth;
+ canvas.height = video.videoHeight;
 
-    let context = canvas.getContext("2d");
-    context.drawImage(video, 0, 0);
+ let context = canvas.getContext("2d");
+ context.drawImage(video, 0, 0);
+ let imageData = canvas.toDataURL("image/png");
 
-    let imageData = canvas.toDataURL("image/png");
+ previewImage.src = imageData;
+ previewImage.style.display = "block";
 
-    previewImage.src = imageData;
-    previewImage.style.display = "block";
-
-    localStorage.setItem("photo", imageData);
-
-    submitBtn.disabled = false;
-    submitBtn.classList.add("enabled");
+ localStorage.setItem("photo", imageData);
+ submitBtn.disabled = false;
+ submitBtn.classList.add("enabled");
 }
 
 function goToID() {
-    localStorage.setItem("fullname", document.getElementById("fullname").value);
-    localStorage.setItem("location", document.getElementById("location").value);
-    localStorage.setItem("dob", document.getElementById("dob").value);
+ localStorage.setItem("fullname", document.getElementById("fullname").value);
+ localStorage.setItem("location", document.getElementById("location").value);
+ localStorage.setItem("dob", document.getElementById("dob").value);
 
-    window.location.href = "id card.html";
+ window.location.href = "dash.html";
 }
 </script>
 
 </body>
 </html>
-

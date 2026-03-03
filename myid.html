@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My ID</title>
+<style>
+body{font-family:Segoe UI;background:#f4f6f9;margin:0;display:flex}
+.sidebar{width:220px;background:#1f2937;color:#fff;padding:20px;height:100vh}
+.menu{list-style:none;padding:0}
+.menu li{padding:10px;cursor:pointer}
+.menu li:hover{background:#374151}
+.main{flex:1;padding:40px}
+.id-card{
+width:350px;
+background:#4e73df;
+color:#fff;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.id-card img{width:100px;border-radius:10px;margin-bottom:10px}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<ul class="menu">
+<li onclick="goPage('dashboard.html')">🏠 Dashboard</li>
+<li onclick="goPage('myid.html')">🪪 My ID</li>
+<li onclick="goPage('reports.html')">📊 Reports</li>
+<li onclick="goPage('settings.html')">⚙ Settings</li>
+</ul>
+</div>
+
+<div class="main">
+<h2>My Digital ID</h2>
+<div class="id-card">
+<img id="photo">
+<h3 id="name"></h3>
+<p id="location"></p>
+<p id="dob"></p>
+</div>
+</div>
+
+<script>
+function goPage(page){ window.location.href = page; }
+
+document.getElementById("name").innerText = localStorage.getItem("fullname");
+document.getElementById("location").innerText = "Location: " + localStorage.getItem("location");
+document.getElementById("dob").innerText = "DOB: " + localStorage.getItem("dob");
+document.getElementById("photo").src = localStorage.getItem("photo");
+</script>
+
+</body>
+</html>
